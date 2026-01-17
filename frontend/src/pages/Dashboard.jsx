@@ -42,7 +42,7 @@ const Dashboard = ({ token, handleLogout }) => {
       await axios.delete(`http://localhost:8080/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      fetchTasks(); // Refresh list setelah hapus
+      fetchTasks(); 
     } catch (err) {
       alert("Gagal menghapus tugas");
     }
@@ -56,7 +56,7 @@ const toggleStatus = async (task) => {
       { ...task, status: newStatus }, 
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    fetchTasks(); // Refresh list setelah update
+    fetchTasks(); 
   } catch (err) {
     alert("Gagal mengubah status");
   }
@@ -87,7 +87,7 @@ const toggleStatus = async (task) => {
         {tasks.map((task) => (
             <div key={task.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition">
                 <div className="flex items-center gap-3">
-                {/* Checkbox untuk selesaikan tugas */}
+             
                 <input 
                     type="checkbox" 
                     checked={task.status === 'done'} 
@@ -113,5 +113,6 @@ const toggleStatus = async (task) => {
     </div>
   );
 };
+
 
 export default Dashboard;
